@@ -1,0 +1,34 @@
+backend/
+│
+├── 📁 config/               # Configuration files
+│   └── db.js                # Database connection setup
+│
+├── 📁 controllers/          # Request handlers (Controller layer)
+│   ├── studentController.js
+│   ├── absenceController.js
+│   └── classController.js
+│
+├── 📁 models/               # Database schemas/models (Model layer)
+│   ├── student.js
+│   ├── absence.js
+│   └── class.js
+│
+├── 📁 routes/               # API route definitions
+│   ├── studentRoutes.js
+│   ├── absenceRoutes.js
+│   └── classRoutes.js
+│
+├── 📁 views/                # (Optional) For rendering pages (if using EJS, etc.)
+│   └── index.ejs
+│
+├── 📁 middleware/           # Middleware like error handlers or auth
+│   └── errorHandler.js
+│
+├── 
+│
+├── .env                     # Environment variables (e.g., DB_URL)
+├── .gitignore
+├── app.js                   # Express app entry point
+├── server.js                # Server startup logic (optional split)
+├── package.json
+└── README.md
