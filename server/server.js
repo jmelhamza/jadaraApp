@@ -1,14 +1,24 @@
 
-import nodemon from "nodemon";
+import { connectDB } from "./config/db.js";
 import e from "express";
+import router from "./router/stud.routes.js";
+import dotenv from "dotenv";
+
+
+dotenv.config();
+
 const app = e();
+app.use(e.json());
+// app.use(e.bodyParser({ extended: true }));
+// app.use(e.urlencoded({ extended: true }));
 
 
-app.get('/', (req, res) => {
-    res.send('👋 hi ana hamza mn server express');
-});
+const PORT = process.env.PORT;
 
+connectDB()
 
-app.listen(3000, () => {
-    console.log(' server is connected http://localhost:3000');
+app.use("/api", router);
+
+app.listen(PORT, () => {
+    console.log(`server is connected http://localhost: ${PORT}`);
 });
