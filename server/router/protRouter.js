@@ -1,6 +1,6 @@
 
 import e from "express";
-import { middleware } from "../middleware/authMiddleware.js";
+import { middleware } from "../middleware/middle.js"
 
 
 const router = e.Router();

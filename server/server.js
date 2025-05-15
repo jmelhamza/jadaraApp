@@ -5,6 +5,7 @@ import router from "./router/stud.routes.js";
 import dotenv from "dotenv";
 import authRouter from "./router/authRouter.js"
 import protRouter from "./router/protRouter.js"
+import cors from "cors"
 
 
 dotenv.config();
