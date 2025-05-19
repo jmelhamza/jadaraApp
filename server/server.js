@@ -3,6 +3,7 @@ import { connectDB } from "./config/db.js";
 import e from "express";
 import router from "./router/stud.routes.js";
 import dotenv from "dotenv";
+import eventRouter from "./router/eventRouter.js"
 
 
 dotenv.config();
@@ -18,6 +19,7 @@ const PORT = process.env.PORT;
 connectDB()
 
 app.use("/api", router);
+app.use("/",eventRouter)
 
 app.listen(PORT, () => {
     console.log(`server is connected http://localhost: ${PORT}`);
