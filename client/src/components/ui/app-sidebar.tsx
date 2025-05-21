@@ -21,7 +21,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar style={{ width: "150px" }}>
+    <Sidebar style={{ width: "70px", height: "88vh", marginTop: "12vh"}}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}>
@@ -30,8 +30,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      <item.icon size={20} />
-                      <span>{item.title}</span>
+                      <item.icon />
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

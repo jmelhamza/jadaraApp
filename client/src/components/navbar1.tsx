@@ -28,7 +28,7 @@ const Navbar1 = ({
   },
 }: Navbar1Props) => {
   return (
-    <header className="w-full border-b bg-background shadow-sm">
+    <header className="w-full border-b flex items-center bg-background h-22 shadow-sm fixed top-0 bg-neutral-100">
       <div className="container max-w-screen-xl mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <a href={logo.url} className="flex items-center gap-3">
