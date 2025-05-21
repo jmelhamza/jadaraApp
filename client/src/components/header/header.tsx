@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="flex items-center justify-between px-6 py-4 shadow bg-white">
       <div className="flex items-center space-x-3">
-        <img src="/jadara.jpg" alt="Jadara Logo" className="w-27 h-22 object-cover" />
+        <img src="logo.png" alt="Jadara Logo" className="w-27 h-22 object-cover" />
 
         {/* <span className="text-2xl font-bold text-gray-800">Jadara</span> */}
       </div>
