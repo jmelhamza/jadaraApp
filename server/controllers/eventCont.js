@@ -11,6 +11,7 @@ const getDetailEvnt = async (req, res) => {
   }
 };
 
+
 const postEvents = async (req, res) => {
   try {
     const newEvent = new Event(req.body);
