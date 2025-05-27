@@ -1,23 +1,19 @@
 
-import { Header } from "./components/header/header"
-import { Footer } from "./components/footer/footer"
-import { CarouselSection } from "./components/main/main"
+
+import AuthForm from "./components/Forms/form"
+// import Index from "./components/homePage"
+
+// import Dashboard from "./components/layout"
+
+
+
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <CarouselSection />
-      <Footer />
-</div>
-)  }
-// import MyForm from "./components/forms/registerForm"
-
-// import Login from "./components/forms/loginForm"
-
-// import Layout from "./components/layout/Layout"
-
-
-
+    
+        <AuthForm/>
+    
+  )
+}
 
 export default App
