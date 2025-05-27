@@ -1,8 +1,8 @@
 
 
-// import Login from "./components/forms/loginForm"
+import Index from "./components/homePage"
 
-import Dashboard from "./components/layout"
+// import Dashboard from "./components/layout"
 
 
 
@@ -10,7 +10,7 @@ import Dashboard from "./components/layout"
 function App() {
   return (
     
-        <Dashboard/>
+        <Index/>
     
   )
 }
