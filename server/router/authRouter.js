@@ -1,7 +1,7 @@
 
 import express from "express"
 import { register, login } from "../controllers/authController.js";
-import { register, login } from "../controllers/authController.js";
+
 import { registerValidation, loginValidation, validate } from "../middleware/validation.js"
 
 
