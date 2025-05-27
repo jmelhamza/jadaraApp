@@ -1,7 +1,5 @@
 
-import { Header } from "./components/header/header"
-import { Footer } from "./components/footer/footer"
-import { CarouselSection } from "./components/main/main"
+
 
 function App() {
   return (
@@ -11,7 +9,7 @@ function App() {
       <Footer /> */
 
 
-      <MyTable/>
+      
       }
 
 
