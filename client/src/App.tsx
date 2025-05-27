@@ -1,6 +1,7 @@
 
 
-import Index from "./components/homePage"
+import AuthForm from "./components/forms/loginForm"
+// import Index from "./components/homePage"
 
 // import Dashboard from "./components/layout"
 
@@ -10,7 +11,7 @@ import Index from "./components/homePage"
 function App() {
   return (
     
-        <Index/>
+        <AuthForm/>
     
   )
 }

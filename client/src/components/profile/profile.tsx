@@ -2,8 +2,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    // CardFooter,
-    // CardHeader,
     CardTitle,
 } from "@/components/ui/card"
 import { FaUser } from "react-icons/fa"
@@ -24,9 +22,6 @@ return (
             <CardDescription>Card Description</CardDescription>
             <p>Card Content</p>
         </CardContent>
-        {/* <CardFooter>
-            <p>Card Footer</p>
-        </CardFooter> */}
         </Card>
     </>
     )
