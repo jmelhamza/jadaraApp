@@ -4,6 +4,10 @@ import e from "express";
 import router from "./router/stud.routes.js";
 import dotenv from "dotenv";
 import eventRouter from "./router/eventRouter.js"
+import coursesRouter from "./router/coursRouter.js"
+import cors from  "cors"
+import authRouter from "./router/authRouter.js"
+import  protRouter from "./router/protRouter.js"
 
 
 dotenv.config();
@@ -25,7 +29,11 @@ const PORT = process.env.PORT;
 connectDB()
 
 app.use("/api", router);
-app.use("/",eventRouter)
+app.use("/",eventRouter);
+app.use("/",coursesRouter)
+
+
+
 
 app.listen(PORT, () => {
     console.log(`server is connected http://localhost: ${PORT}`);

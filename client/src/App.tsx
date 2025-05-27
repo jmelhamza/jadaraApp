@@ -1,38 +1,28 @@
 
-import { Header } from "./components/header/header";
-import { Footer } from "./components/footer/footer";
-import { CarouselSection } from "./components/main/main";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from "./components/HomePage";
-import Forms from "./components/Forms"; 
+import HomePage from "./components/HomePage"; 
+import Forms from "./components/Forms";       
+import Profile from "./components/layout"
 
-// routes
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
   },
   {
-    path: "/Forms",
-    element: <Forms />, 
+    path: "/forms",
+    element: <Forms />,
   },
+   {
+    path: "/profile",
+    element: <Profile />,
+  },
+
 ]);
 
 function App() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <CarouselSection />
-      <Footer />
-</div>
-)  }
-// import MyForm from "./components/forms/registerForm"
+  return <RouterProvider router={router} />;
+}
 
-// import Login from "./components/forms/loginForm"
+export default App;
 
-// import Layout from "./components/layout/Layout"
-
-
-
-
-export default App

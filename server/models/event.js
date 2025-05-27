@@ -9,7 +9,6 @@ const eventSchema = new mongoose.Schema({
            location: String,
 });
 
-
  const Event = mongoose.model('Event', eventSchema);
 
  export default Event ;
