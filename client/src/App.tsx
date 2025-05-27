@@ -6,18 +6,16 @@ import { CarouselSection } from "./components/main/main"
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      {/* <Header />
       <CarouselSection />
-      <Footer />
+      <Footer /> */
+
+
+      <MyTable/>
+      }
+
+
 </div>
-)  }
-// import MyForm from "./components/forms/registerForm"
-
-// import Login from "./components/forms/loginForm"
-
-// import Layout from "./components/layout/Layout"
-
-
-
-
-export default App
+  )
+}
+export default App 

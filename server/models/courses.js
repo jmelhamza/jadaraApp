@@ -4,6 +4,20 @@ const coursesSchema = new mongoose.Schema({
     type: String,
     required: true,
      },
+     description:{
+      type: String,
+    required : true},
+    group: {
+      type:String,
+      required : true},
+      time: {
+         type:String,
+      required : true
+      },
+      status:{
+         type:String,
+      required : true
+      },
      });
      
      const Courses = mongoose.model('Courses', coursesSchema);
