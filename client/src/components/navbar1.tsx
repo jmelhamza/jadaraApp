@@ -46,7 +46,7 @@ const Navbar1 = ({
               <AvatarImage src={user.avatarUrl} alt={user.name} />
             ) : (
               <AvatarFallback>
-                <User className="h-4 w-4 text-muted-foreground" />
+                <User className="h-12 w-12 text-muted-foreground" />
               </AvatarFallback>
             )}
           </Avatar>
