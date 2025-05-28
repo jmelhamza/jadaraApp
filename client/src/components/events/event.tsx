@@ -18,7 +18,7 @@ type Event = {
 export function CarouselSpacing() {
     const [events, setEvents] = useState<Event[]>([])
     useEffect(() => {
-  fetch("http://localhost:4000/eventRouter")
+  fetch("http://localhost:4000/addevent")
     .then((res) => res.json())
     .then((data) => setEvents(data))
     .catch((err) => console.error("Fetch failed", err));
@@ -31,7 +31,7 @@ export function CarouselSpacing() {
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/1">
             <div className="p-1">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <CardContent className="flex flex-col items-start justify-start space-y-2 ">
                   
                 <h3 className="text-xl font-bold">{event.title}</h3>
           <p className="text-sm text-muted-foreground">{event.description}</p>
