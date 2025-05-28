@@ -1,15 +1,28 @@
-import { CarouselSpacing } from "./components/events/event"
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from "./components/homePage/index"; 
+import Forms from "./components/Forms";       
+import Profile from "./components/layout"
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/forms",
+    element: <Forms />,
+  },
+   {
+    path: "/profile",
+    element: <Profile />,
+  },
 
-
+]);
 
 function App() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-svh">
-      <CarouselSpacing/>
-    </div>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
+
