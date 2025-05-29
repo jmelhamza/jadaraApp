@@ -1,114 +1,113 @@
 
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {jwtDecode} from "jwt-decode"
 
-
-import { useState } from "react"
+import LoginForm from "./loginForm";
+import SignUpForm from "./signupform";
 
 export default function AuthForm() {
-  const [isSignUp, setIsSignUp] = useState(false)
+  const navigate = useNavigate();
+
+  const [isSignUp, setIsSignUp] = useState(false);
+
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const [username, setUsername] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
 
   const toggleForm = () => {
-    setIsSignUp(!isSignUp)
-  }
+    setIsSignUp((prev) => !prev);
+  };
 
- 
-  const LoginForm = () => (
-    <div>
-      <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-      <form className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1" htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="you@example.com"
-          />
-        </div>
+  const login = () => {
+    axios.post("http://localhost:4000/auth/login", { email, password })
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        navigate("/profile");
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Failed authentication");
+      });
+  };
 
-        <div>
-          <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="••••••••"
-          />
-        </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
-        >
-          Login
-        </button>
-      </form>
 
-      <p className="text-sm text-center text-gray-600 mt-4">
-        Don't have an account?{" "}
-        <a onClick={toggleForm} className="text-blue-600 hover:underline cursor-pointer">
-          Sign up
-        </a>
-      </p>
-    </div>
-  )
+  const signUp = () => {
+    axios.post("http://localhost:4000/auth/register", {
+        username,
+        email: newEmail,
+        password: newPassword,
+      })
+      .then((res) => {
+        console.log("Signup success:", res);
+        setIsSignUp(false)
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Signup failed");
+      });
+  };
 
-  // Signup Form
-  const SignUpForm = () => (
-    <div>
-      <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
-      <form className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1" htmlFor="username">Username</label>
-          <input
-            id="username"
-            type="text"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="yourusername"
-          />
-        </div>
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
 
-        <div>
-          <label className="block text-sm font-medium mb-1" htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="you@example.com"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1" htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="••••••••"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-200"
-        >
-          Sign Up
-        </button>
-      </form>
-
-      <p className="text-sm text-center text-gray-600 mt-4">
-        Already have an account?{" "}
-        <a onClick={toggleForm} className="text-blue-600 hover:underline cursor-pointer">
-          Log in
-        </a>
-      </p>
-    </div>
-  )
+    try {
+        const { exp } = jwtDecode(token);
+        if (Date.now() >= exp * 1000) {
+            
+            localStorage.removeItem("token");
+        } else {
+            navigate("/profile");
+        }
+    } catch (err) {
+        
+        console.log(err)
+        localStorage.removeItem("token");
+    }
+}, [navigate]);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 w-full" style={{ width: '100vw' }}>
+    <div
+      className="min-h-screen bg-gray-100 flex items-center justify-center px-4 w-full"
+      style={{ width: "100vw" }}
+    >
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        {isSignUp ? <SignUpForm /> : <LoginForm />}
+        {isSignUp ? (
+          <SignUpForm
+            username={username}
+            email={newEmail}
+            password={newPassword}
+            setUsername={setUsername}
+            setEmail={setNewEmail}
+            setPassword={setNewPassword}
+            onSubmit={(e) => {
+              e.preventDefault();
+              signUp();
+            }}
+            toggleForm={toggleForm}
+          />
+        ) : (
+          <LoginForm
+            email={email}
+            password={password}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            onSubmit={(e) => {
+              e.preventDefault();
+              login();
+            }}
+            toggleForm={toggleForm}
+          />
+        )}
       </div>
     </div>
-  )
+  );
 }

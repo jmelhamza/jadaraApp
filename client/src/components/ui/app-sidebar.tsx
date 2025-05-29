@@ -9,14 +9,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Link } from "react-router-dom";
 
 // Menu items.
 const items = [
-  { title: "PROFILE", url: "#", icon: FaUser },
+  { title: "PROFILE", url: "/profile/", icon: FaUser },
   { title: "GROUPE", url: "#", icon: FaUsers },
-  { title: "COURSES", url: "#", icon: FaBook },
+  { title: "COURSES", url: "/profile/courses", icon: FaBook },
   { title: "EVENTS", url: "#", icon: FaCalendarAlt },
-  { title: "Settings", url: "#", icon: FaCog },
+  { title: "Settings", url: "/profile/setting", icon: FaCog },
 ];
 
 export function AppSidebar() {
@@ -29,9 +30,9 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} style={{ display: "flex", alignItems: "center", gap: "10px", height: "40px" }}>
+                    <Link to={item.url} style={{ display: "flex", alignItems: "center", gap: "10px", height: "40px" }}>
                       <item.icon/>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
