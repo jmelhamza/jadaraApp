@@ -8,7 +8,10 @@ import { FaUser } from "react-icons/fa"
 
 
 
-const Profile = () => {
+
+
+const Profile = (props) => {
+
 
 
 return (
@@ -17,7 +20,7 @@ return (
         <CardContent className="h-3/5 w-3/5 flex flex-col justify-evenly items-center">
             <div className="flex flex-col justify-evenly items-center h-2/5">
             <FaUser size={100}/>
-            <CardTitle>Jhone Doe</CardTitle>
+            <CardTitle> { props.userId } </CardTitle>
             </div>
             <CardDescription>Card Description</CardDescription>
             <p>Card Content</p>

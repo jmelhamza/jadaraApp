@@ -1,8 +1,12 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from "./components/homePage/index"; 
-import Forms from "./components/Forms";       
-import Profile from "./components/layout"
+import Forms from "./components/Forms";  
+import ProtectDash from './components/layout/protectDash';
+import Profile from './components/dashboardMain/profile';
+import { AccordionDemo } from './components/dashboardMain/setting';
+import MyTable from './components/courrses/cours';
+// import Profile from "./components/layout"
 
 const router = createBrowserRouter([
   {
@@ -13,12 +17,27 @@ const router = createBrowserRouter([
     path: "/forms",
     element: <Forms />,
   },
-   {
+  {
     path: "/profile",
-    element: <Profile />,
+    element: <ProtectDash/>,
+    children: [
+      {
+        index: true,
+        element: <Profile/>,
+      },
+      {
+        path: "/profile/setting",
+        element: <AccordionDemo/>
+      },
+      {
+        path: "/profile/courses",
+        element: <MyTable/>
+      }
+    ]
   },
 
 ]);
+
 
 function App() {
   return <RouterProvider router={router} />;
