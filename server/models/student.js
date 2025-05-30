@@ -18,7 +18,11 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "user"
+    default: "Student"
+  },
+  groupe: {
+    type: Number,
+    default: null
   }
   });
 

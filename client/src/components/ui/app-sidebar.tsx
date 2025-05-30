@@ -16,7 +16,7 @@ import { useContext } from "react";
 // Menu items.
 const items = [
   { title: "PROFILE", url: "/profile/", icon: FaUser },
-  { title: "GROUPE", url: "#", icon: FaUsers },
+  { title: "GROUPE", url: "/profile/groupe", icon: FaUsers },
   { title: "COURSES", url: "/profile/courses", icon: FaBook },
   { title: "EVENTS", url: "/profile/events", icon: FaCalendarAlt },
   { title: "Settings", url: "/profile/setting", icon: FaCog },

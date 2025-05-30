@@ -19,9 +19,9 @@ const LoginForm: React.FC<LoginFormProps> = ({
   toggleForm,
 }) => {
   return (
-    <div>
+    <div className="dark: text-neutral-900">
       <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-      <form className="space-y-4" onSubmit={onSubmit}>
+      <form className="space-y-4 " onSubmit={onSubmit}>
         <div>
           <label className="block text-sm font-medium mb-1" htmlFor="email">
             Email

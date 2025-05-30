@@ -32,14 +32,13 @@ axios.get("http://localhost:4000/protected/profile", {
 })
 .then((res) => {
     setData(res.data.user)
-    console.log(data)
 })
 .catch((err) => {
     console.log(err); 
     navigate("/forms"); 
 });
 
-}, [navigate,data]);
+}, [navigate]);
 
 
   return (

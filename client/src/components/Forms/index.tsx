@@ -1,16 +1,17 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 // import {jwtDecode} from "jwt-decode"
 
 import LoginForm from "./loginForm";
 import SignUpForm from "./signupform";
+import useAuthRedirect from "@/hooks/useRedirect";
 
 export default function AuthForm() {
   const navigate = useNavigate();
 
-
+  useAuthRedirect()
 
 
   const [isSignUp, setIsSignUp] = useState(false);
@@ -60,12 +61,12 @@ export default function AuthForm() {
 
   
 
-  useEffect(()=>{
-      if (localStorage.getItem("token")) {
-        navigate("/profile");
-      }
+  // useEffect(()=>{
+  //     if (localStorage.getItem("token")) {
+  //       navigate("/profile");
+  //     }
   
-    },[navigate])
+  //   },[navigate])
 //   useEffect(() => {
 //     const token = localStorage.getItem("token");
 //     if (!token) return;
@@ -88,7 +89,7 @@ export default function AuthForm() {
 
   return (
     <div
-      className="min-h-screen bg-gray-100 flex items-center justify-center px-4 w-full"
+      className="min-h-screen bg-gray-100 flex items-center justify-center px-4 w-full dark:text-gray-100 dark:bg-neutral-900"
       style={{ width: "100vw" }}
     >
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">

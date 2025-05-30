@@ -8,6 +8,7 @@ import CourseRole from './components/dashboardMain/dashRole/courseRole';
 import EventRole from './components/dashboardMain/dashRole/eventRole';
 import InfoRole from './components/dashboardMain/dashRole/infoRole';
 import { ThemeProvider } from './components/darkMode/darkMode';
+import UsersRole from './components/dashboardMain/dashRole/userRole';
 
 // import Profile from "./components/layout"
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/setting",
         element: <AccordionDemo/>
+      },
+      {
+        path: "/profile/groupe",
+        element: <UsersRole/>
       },
       {
         path: "/profile/courses",

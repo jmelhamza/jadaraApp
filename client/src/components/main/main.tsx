@@ -219,10 +219,10 @@ export function CarouselSection() {
           </CarouselItem>
 
           <CarouselItem className="bg-gray-300 p-10 text-center rounded-lg">
-            Slide 2 - ها هو العرض الثاني
+            Slide 2 
           </CarouselItem>
           <CarouselItem className="bg-gray-400 p-10 text-center rounded-lg">
-            Slide 3 - وآخر عرض
+            Slide 3 
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious />

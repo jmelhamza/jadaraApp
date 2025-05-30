@@ -22,7 +22,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({
   toggleForm,
 }) => {
   return (
-    <div>
+    <div className="dark:text-neutral-900">
       <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
       <form className="space-y-4" onSubmit={onSubmit}>
         <div>

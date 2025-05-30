@@ -3,14 +3,16 @@
 import { Header } from "../header/header"
 import { Footer } from "../footer/footer"
 import { CarouselSection } from "../main/main"
+import useAuthRedirect from "@/hooks/useRedirect"
 // import { useEffect } from "react"
 // import { jwtDecode } from "jwt-decode"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 // import { useEffect } from "react"
 
 const Index = () => {
 
-  const navigate = useNavigate()
+  useAuthRedirect()
+  // const navigate = useNavigate()
 
   // useEffect(()=>{
   //   if (localStorage.getItem("token")) {
@@ -19,11 +21,7 @@ const Index = () => {
 
   // },[navigate])
 
-  if (localStorage.getItem("token") !== null) {
-
-        navigate("/profile");
-
-    }
+  
 
 
 //   useEffect(() => {
