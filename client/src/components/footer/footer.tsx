@@ -1,9 +1,9 @@
-import React from "react"
+
 import { Instagram, Mail, Facebook } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-600 py-6 mt-10">
+    <footer className="bg-gray-100 text-gray-600">
       <div className="container mx-auto text-center space-y-4">
         <h1 className="text-xl font-semibold">Contact Us</h1>
         <div className="flex justify-center gap-6">

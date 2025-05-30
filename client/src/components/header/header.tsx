@@ -1,7 +1,11 @@
 
 import { Button } from "../ui/button"
+import { useNavigate } from "react-router-dom"
  
 export function Header() {
+
+  const navigate = useNavigate()
+
   return (
     <header className="flex items-center justify-between px-6 py-4 shadow bg-white">
       <div className="flex items-center space-x-3">
@@ -15,7 +19,7 @@ export function Header() {
         <a href="#" className="hover:text-blue-600">About</a> */}
       </nav>
       <div className="hidden md:flex space-x-2">
-        <Button variant="outline">Sign In</Button>
+        <Button onClick={()=> navigate("/forms")} variant="outline">Sign In</Button>
         <Button>Sign Up</Button>
       </div>
     </header>

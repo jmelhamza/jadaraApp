@@ -9,10 +9,8 @@ interface Navbar1Props {
     alt: string;
     title: string;
   };
-  user?: {
-    name: string;
-    avatarUrl?: string;
-  };
+  username?: string;
+  avatarUrl?: string;
 }
 
 const Navbar1 = ({
@@ -22,10 +20,8 @@ const Navbar1 = ({
     alt: "logo",
     title: "Souss Tech Academy",
   },
-  user = {
-    name: "John Doe",
-    avatarUrl: "",
-  },
+  username,
+  avatarUrl,
 }: Navbar1Props) => {
   return (
     <header className="w-full border-b flex items-center bg-background h-22 shadow-sm fixed top-0 bg-neutral-100">
@@ -40,10 +36,10 @@ const Navbar1 = ({
 
         {/* User Info */}
         <div className="flex items-center gap-3">
-          <span className="text-sm font-bold text-muted-foreground">{user.name}</span>
+          <span className="text-sm font-bold text-muted-foreground">{username}</span>
           <Avatar className="h-9 w-9">
-            {user.avatarUrl ? (
-              <AvatarImage src={user.avatarUrl} alt={user.name} />
+            {avatarUrl ? (
+              <AvatarImage src={avatarUrl} alt={username} />
             ) : (
               <AvatarFallback>
                 <User className="h-12 w-12 text-muted-foreground" />

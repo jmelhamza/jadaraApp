@@ -199,11 +199,11 @@ export function CarouselSection() {
     <section className="p-6">
       <Carousel>
         <CarouselContent>
-          <CarouselItem className="relative">
+          <CarouselItem className="relative" style={{ height: "60vh" }}>
             <img
               src="/jadara event1.jpg"
               alt="Event 1"
-              className="mx-auto mb-4 rounded-md w-full h-400px object-cover opacity-60"
+              className="mx-auto mb-4 rounded-md w-4/5 h-full object-cover opacity-70"
             />
             <div className="absolute inset-0 flex items-center justify-center z-10 px-6">
               <h1 className="text-black text-center text-3xl max-w-3xl p-6 bg-white/70 rounded-lg shadow">

@@ -5,14 +5,16 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { FaUser } from "react-icons/fa"
+import { useContext } from "react"
+import { MyToken } from "../layout"
 
 
 
 
 
-const Profile = (props) => {
+const Profile = () => {
 
-
+    const data = useContext(MyToken)
 
 return (
     <>
@@ -20,9 +22,9 @@ return (
         <CardContent className="h-3/5 w-3/5 flex flex-col justify-evenly items-center">
             <div className="flex flex-col justify-evenly items-center h-2/5">
             <FaUser size={100}/>
-            <CardTitle> { props.userId } </CardTitle>
+            <CardTitle> { data.username } </CardTitle>
             </div>
-            <CardDescription>Card Description</CardDescription>
+            <CardDescription>{ (data.role == "admin")? "hello Mr, its your space ( Kolchi dyalk )": "hello Student!" }</CardDescription>
             <p>Card Content</p>
         </CardContent>
         </Card>

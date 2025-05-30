@@ -8,8 +8,6 @@ import protRouter from "./router/protRouter.js"
 import eventRouter from "./router/eventRouter.js"
 import coursesRouter from "./router/coursRouter.js"
 import cors from  "cors"
-import authRouter from "./router/authRouter.js"
-import  protRouter from "./router/protRouter.js"
 
 
 dotenv.config();

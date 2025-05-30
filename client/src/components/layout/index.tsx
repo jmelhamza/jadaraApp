@@ -8,19 +8,20 @@
 // import Profile from "../dashboardMain/profile"
 import { Header } from "./header"
 import Layout from "./Layout"
-import { useEffect, useState } from "react"
+import { useEffect, useState, createContext } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import axios from "axios"
-import { jwtDecode } from "jwt-decode"
 // import { AccordionDemo } from "../dashboardMain/setting"
 
 
-
+const MyToken = createContext({})
 
 function Dashboard () {
 
     const navigate =useNavigate()
-    const [data, setData]= useState(null)
+    const [data, setData]= useState({})
+
+    
 
 useEffect(() => {
 
@@ -40,32 +41,9 @@ axios.get("http://localhost:4000/protected/profile", {
 
 }, [navigate,data]);
 
-useEffect(()=>{
-  window.addEventListener("popstate", ()=>{
-
-    const token = localStorage.getItem("token");
-        if (token) {
-          return;
-        }
-    
-        // try {
-        //     const { exp } = jwtDecode(token);
-        //     if (Date.now() >= exp * 1000) {
-                
-        //         localStorage.removeItem("token");
-        //     } else {
-        //         navigate("/profile");
-        //     }
-        // } catch (err) {
-            
-        //     console.log(err)
-        //     localStorage.removeItem("token");
-        // }
-
-  } )
-},[navigate])
 
   return (
+    <MyToken.Provider value={ data }>
     <div className="flex flex-col items-center justify-center min-h-svh">
       <Header />
       <Layout/>
@@ -75,10 +53,11 @@ useEffect(()=>{
       }
       <Outlet/>
     </div>
+    </MyToken.Provider>
     
   )
 }
 
 export default Dashboard
-
+export { MyToken }
 

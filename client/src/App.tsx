@@ -3,9 +3,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from "./components/homePage/index"; 
 import Forms from "./components/Forms";  
 import ProtectDash from './components/layout/protectDash';
-import Profile from './components/dashboardMain/profile';
 import { AccordionDemo } from './components/dashboardMain/setting';
-import MyTable from './components/courrses/cours';
+import CourseRole from './components/dashboardMain/dashRole/courseRole';
+import EventRole from './components/dashboardMain/dashRole/eventRole';
+import InfoRole from './components/dashboardMain/dashRole/infoRole';
+import { ThemeProvider } from './components/darkMode/darkMode';
+
 // import Profile from "./components/layout"
 
 const router = createBrowserRouter([
@@ -23,7 +26,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Profile/>,
+        element: <InfoRole/>,
       },
       {
         path: "/profile/setting",
@@ -31,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile/courses",
-        element: <MyTable/>
+        element: <CourseRole/>
+      },
+      {
+        path: "/profile/events",
+        element: <EventRole/>
       }
     ]
   },
@@ -40,8 +47,16 @@ const router = createBrowserRouter([
 
 
 function App() {
-  return <RouterProvider router={router} />;
+
+  return ( 
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />;
+
+    </ThemeProvider>
+
+  )
 }
 
 export default App;
+
 
