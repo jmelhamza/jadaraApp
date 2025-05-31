@@ -2,6 +2,7 @@
 import { CarouselSpacing } from "@/components/events/event"
 import { MyToken } from "@/components/layout"
 import { useContext } from "react"
+import { Events } from "../eventsManagement"
 
 
 const EventRole = () => {
@@ -10,7 +11,7 @@ const EventRole = () => {
 
     return (
             <>
-                { data.role == "admin" ? <h1> Sorry Admin we are waiting Redouan ...</h1> : <CarouselSpacing/> }
+                { data.role == "admin" ? <Events/> : <CarouselSpacing/> }
             </>
 )
 }

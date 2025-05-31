@@ -30,11 +30,10 @@ export function TableDemo() {
 
 
     useEffect(()=>{
-        console.log(data)
         if(data.groupe){ 
-            setMyClass([])
+          setMyClass(students.filter((ele)=> ele.groupe === data.groupe ))
         }else{
-            setMyClass(students.filter((ele)=> ele.groupe !== data.groupe ))
+          setMyClass([])
         }
     },[data, students])
 

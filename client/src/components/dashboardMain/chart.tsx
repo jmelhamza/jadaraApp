@@ -2,10 +2,60 @@
 "use client"
 
 import * as React from "react"
-
+import { useState, useEffect } from "react"
+import axios from "axios"
 import { cn } from "@/lib/utils"
 
 export function Component() {
+
+  const [ students, setStudents ] = useState([])
+  const [ groupe1, set1 ] = useState([])
+  const [ groupe2, set2 ] = useState([])
+  const [ groupe3, set3 ] = useState([])
+  const [ groupe4, set4 ] = useState([])
+  const [ newStudents, setNew ] = useState([])
+  const [events, setEvents] = useState([])
+
+    const [courss, setCourss] = useState([])
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      console.log("Fetching courses...")
+      try {
+        const res = await axios.get("http://localhost:4000/courses")
+        console.log("Courses fetched:", res.data)
+        setCourss(res.data)
+      } catch (error) {
+        console.error("Error fetching courses:", error)
+      }
+    }
+
+    fetchCourses()
+  }, [])
+
+  useEffect(() => {
+        axios.get("http://localhost:4000/api/add")
+        .then((res)=>{
+            setStudents(res.data.filter((user) => user.role !== "admin" ))
+        })
+        .catch((err) => console.log(err) )
+    },[])
+
+        useEffect(() => {
+      fetch("http://localhost:4000/addevent")
+        .then((res) => res.json())
+        .then((data) => setEvents(data))
+        .catch((err) => console.error("Fetch failed", err));
+    }, []);
+
+  useEffect(()=>{
+      set1(students.filter((ele)=> ele.groupe===1))
+      set2(students.filter((ele)=> ele.groupe===2))
+      set3(students.filter((ele)=> ele.groupe===3))
+      set4(students.filter((ele)=> ele.groupe===4))
+      setNew(students.filter((ele)=> ele.groupe===null))
+  },[students])
+    
   return (
     <div className="grid aspect-video w-full max-w-md justify-center text-foreground md:grid-cols-2 [&>div]:relative [&>div]:flex [&>div]:h-[137px] [&>div]:w-[224px] [&>div]:items-center [&>div]:justify-center [&>div]:p-4">
       <div>
@@ -35,8 +85,10 @@ export function Component() {
         <TooltipDemo
           label="Groupes"
           payload={[
-            { name: "groupe 1", value: 186, fill: "hsl(var(--chart-1))" },
-            { name: "groupe 2", value: 80, fill: "hsl(var(--chart-2))" },
+            { name: "groupe 1", value: groupe1.length, fill: "hsl(var(--chart-1))" },
+            { name: "groupe 2", value: groupe2.length, fill: "hsl(var(--chart-2))" },
+            { name: "groupe 3", value: groupe3.length, fill: "hsl(var(--chart-3))" },
+            { name: "groupe 4", value: groupe4.length, fill: "hsl(var(--chart-4))" },
           ]}
           className="w-[9rem]"
         />
@@ -69,8 +121,7 @@ export function Component() {
           label="Browser"
           hideLabel
           payload={[
-            { name: "Intro", value: 1286, fill: "hsl(var(--chart-3))" },
-            { name: "MERN", value: 1000, fill: "hsl(var(--chart-4))" },
+            { name: "MERN", value: courss.length, fill: "hsl(var(--chart-3))" }
           ]}
           indicator="dashed"
           className="w-[8rem]"
@@ -78,9 +129,10 @@ export function Component() {
       </div>
       <div className="!hidden md:!flex">
         <TooltipDemo
-          label="Page Views"
+          label="Students"
           payload={[
-            { name: "Desktop", value: 12486, fill: "hsl(var(--chart-3))" },
+            { name: "All Students", value: students.length, fill: "hsl(var(--chart-3))" },
+            { name: "New Students", value: newStudents.length, fill: "hsl(var(--chart-4))" },
           ]}
           className="w-[9rem]"
           indicator="line"
@@ -94,7 +146,7 @@ export function Component() {
           label="Browser"
           hideLabel
           payload={[
-            { name: "Soon", value: 1286, fill: "hsl(var(--chart-1))" },
+            { name: "Soon", value: events.length, fill: "hsl(var(--chart-1))" },
           ]}
           indicator="dot"
           className="w-[8rem]"

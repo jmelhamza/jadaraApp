@@ -14,7 +14,15 @@ export const middleware = (req, res, next) =>{
         }
 
         const decodedToken = jwt.verify(token, process.env.SERCRET_KEY);
-        req.userData = { userId : decodedToken.userId, email: decodedToken.email, username: decodedToken.username ,role: decodedToken.role }
+        req.userData = { 
+
+            userId : decodedToken.userId,
+            email: decodedToken.email,
+            username: decodedToken.username ,
+            role: decodedToken.role,
+            groupe: decodedToken.groupe
+
+            }
         next()
     } catch (error) {
         res.status(401).json({ error : "Invalid authentication token" })
