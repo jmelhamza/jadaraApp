@@ -2,52 +2,23 @@
 
 import { Header } from "../header/header"
 import { Footer } from "../footer/footer"
-import { CarouselSection } from "../main/main"
 import useAuthRedirect from "@/hooks/useRedirect"
-// import { useEffect } from "react"
-// import { jwtDecode } from "jwt-decode"
-// import { useNavigate } from "react-router-dom"
-// import { useEffect } from "react"
+import { CarouselSpacing } from "../events/event"
+
 
 const Index = () => {
 
   useAuthRedirect()
-  // const navigate = useNavigate()
 
-  // useEffect(()=>{
-  //   if (localStorage.getItem("token")) {
-  //     navigate("/profile");
-  //   }
-
-  // },[navigate])
-
-  
-
-
-//   useEffect(() => {
-//       const token = localStorage.getItem("token");
-//       if (!token) return;
-  
-//       try {
-//           const { exp } = jwtDecode(token);
-//           if (Date.now() >= exp * 1000) {
-              
-//               localStorage.removeItem("token");
-//           } else {
-//               navigate("/profile");
-//           }
-//       } catch (err) {
-          
-//           console.log(err)
-//           localStorage.removeItem("token");
-//       }
-//   }, [navigate]);
 
   return (
     <>
 
         <Header />
-        <CarouselSection />
+        <main className="flex justify-center items-center w-full h-[75vh]"
+>
+        <CarouselSpacing/>
+        </main>
         <Footer />
 
     </>

@@ -3,7 +3,7 @@
 import * as React from "react"
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
@@ -195,6 +195,15 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 CarouselNext.displayName = "CarouselNext"
 
 export function CarouselSection() {
+
+  const [events, setEvents] = useState<Event[]>([])
+      useEffect(() => {
+        fetch("http://localhost:4000/addevent")
+        .then((res) => res.json())
+        .then((data) => setEvents(data))
+        .catch((err) => console.error("Fetch failed", err));
+  }, []);
+
   return (
     <section className="p-6">
       <Carousel>
@@ -218,12 +227,12 @@ export function CarouselSection() {
             </div>
           </CarouselItem>
 
-          <CarouselItem className="bg-gray-300 p-10 text-center rounded-lg">
-            Slide 2 
-          </CarouselItem>
-          <CarouselItem className="bg-gray-400 p-10 text-center rounded-lg">
-            Slide 3 
-          </CarouselItem>
+          
+          { events && events.map((ele)=>( 
+              <CarouselItem className="bg-gray-400 p-10 text-center rounded-lg">
+                  
+              </CarouselItem>
+          ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

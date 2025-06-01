@@ -1,4 +1,5 @@
 
+import CourseManager from "@/components/Admincourses/piece/lestcourses"
 import MyTable from "@/components/courrses/cours"
 import { MyToken } from "@/components/layout"
 import { useContext } from "react"
@@ -9,7 +10,7 @@ const CourseRole = () => {
 
     return (
             <>
-                { data.role == "admin" ? <h1> Sorry Admin we are waiting Anas ...</h1> : <MyTable/> }
+                { data.role == "admin" ? <CourseManager/> : <MyTable/> }
             </>
 )
 }

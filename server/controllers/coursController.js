@@ -39,7 +39,14 @@ export const updateCourse = async (req, res) => {
   try {
     const course = await Courses.findByIdAndUpdate(
       req.params.id,
-      { name: req.body.name },
+      // { name: req.body.name },
+       {
+        name: req.body.name,
+        description: req.body.description,
+        status: req.body.status,
+        time: req.body.time,
+        group: req.body.group,
+      },
       { new: true }
     );
     if (!course) return res.status(404).json({ error: "Course not found" });

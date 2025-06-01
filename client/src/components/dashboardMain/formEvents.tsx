@@ -9,8 +9,28 @@ const EditEvent = (props) => {
     const [ title, setTitle ] = useState(props.title)
     const [ date, setDate ] = useState(props.date)
     const [ location, setLocation ] = useState(props.location)
+    const [image, setImage] = useState(props.image)
+
+
+const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+        const base64String = reader.result.split(",")[1]
+        setImage(base64String);
+    };
+
+    reader.readAsDataURL(file);
+
+    reader.onerror = (error) => {
+        console.error("Error encoding image:", error)
+    };
+};
+
+
     const update = (id) => {
-        axios.put(`http://localhost:4000/putevent/${id}`, { title, date, location })
+        axios.put(`http://localhost:4000/putevent/${id}`, { title, date, location, image })
         .then((res)=> console.log(res))
         .catch((err) => console.log(err))
     }
@@ -39,7 +59,11 @@ return (
             onChange={(e) => setLocation(e.target.value)}
             className="w-full p-2 border rounded-md bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-
+        <input
+                type="file"
+                onChange={handleFileUpload} 
+                className="w-full p-2 border rounded-md bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
         <button onClick={()=>{ props.fun(); update(props.id) }} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700">
             Up Date
         </button>

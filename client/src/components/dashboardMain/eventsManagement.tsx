@@ -26,6 +26,7 @@ export function Events() {
     const [ title, setTitle ] = useState('')
     const [ date, setDate ] = useState('')
     const [ location, setLocation ] = useState('')
+    const [ image, setImage ] = useState('')
     const [ studId, setId ] = useState('')
     const [ isDelete, setIsDelete ] = useState(false)
     const [ toAdd, setToAdd ] = useState(false)
@@ -73,6 +74,7 @@ export function Events() {
           <TableHead>Title</TableHead>
           <TableHead>Date</TableHead>
           <TableHead>Location</TableHead>
+          <TableHead>Image</TableHead>
           <TableHead>Action</TableHead>
         </TableRow>
       </TableHeader>
@@ -83,8 +85,9 @@ export function Events() {
             <TableCell>{ele.title}</TableCell>
             <TableCell>{ele.date}</TableCell>
             <TableCell>{ele.location}</TableCell>
+            <TableCell><img src={ele.image} height={"20px"} width={"20px"} alt="" /></TableCell>
             <TableCell className="text-medium flex gap-3">
-                <FaEdit onClick={ () =>{ setShowForm(true); setTitle(ele.title); setDate(ele.date); setLocation(ele.location); setId(ele._id) }} size={20}/>
+                <FaEdit onClick={ () =>{ setShowForm(true); setTitle(ele.title); setDate(ele.date); setLocation(ele.location); setId(ele._id) ; setImage(ele.image) }} size={20}/>
                 <FaTrash onClick={()=>{ deleteEvent(ele._id) }} size={20}/>
                 
             </TableCell>
@@ -98,7 +101,7 @@ export function Events() {
         </TableRow>
       </TableFooter>
     </Table>
-    { showForm && <EditEvent fun={ hide } title={ title } date={ date } location={ location } id={ studId }/> }
+    { showForm && <EditEvent fun={ hide } title={ title } date={ date } location={ location } image={ image } id={ studId }/> }
     { toAdd && <PostEvent fun={ hideAddForm }/> }
     </>
   )

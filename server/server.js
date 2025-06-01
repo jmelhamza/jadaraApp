@@ -10,12 +10,11 @@ import coursesRouter from "./router/coursRouter.js"
 import cors from  "cors"
 
 
+
 dotenv.config();
 
 const app = e();
 app.use(e.json());
-
-app.use("/uploads", e.static("uploads"))
 
 app.use(cors({
     origin: "http://localhost:5173",

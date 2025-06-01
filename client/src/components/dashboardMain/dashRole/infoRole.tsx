@@ -12,7 +12,7 @@ const InfoRole = () => {
 
     return (
             <>
-                { data.role == "admin" ? <Component /> : <Profile/> }
+                { data.role ? ( data.role === "admin" ? <Component /> : <Profile/> ) : <h1>Loading ...</h1> }
             </>
 )
 }
