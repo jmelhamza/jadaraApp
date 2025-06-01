@@ -38,10 +38,7 @@ const router = createBrowserRouter([
 
 ]);
 
-// import AddCourseButton from "./components/Admincourses/index.tsx"
 
-// import MyForm from "./components/Admincourses/piece/Addcourse.tsx"
-import CourseManager from "./components/Admincourses/piece/lestcourses.tsx"
 
 function App() {
   return <RouterProvider router={router} />;
