@@ -9,19 +9,20 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Link } from "react-router-dom";
 
 // Menu items.
 const items = [
-  { title: "PROFILE", url: "#", icon: FaUser },
+  { title: "PROFILE", url: "/profile/", icon: FaUser },
   { title: "GROUPE", url: "#", icon: FaUsers },
-  { title: "COURSES", url: "#", icon: FaBook },
+  { title: "COURSES", url: "/profile/courses", icon: FaBook },
   { title: "EVENTS", url: "#", icon: FaCalendarAlt },
-  { title: "Settings", url: "#", icon: FaCog },
+  { title: "Settings", url: "/profile/setting", icon: FaCog },
 ];
 
 export function AppSidebar() {
   return (
-    <Sidebar style={{ width: "150px" }}>
+    <Sidebar style={{ width: "6vw", height: "88vh", marginTop: "12vh"}}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}>
@@ -29,10 +30,9 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      <item.icon size={20} />
-                      <span>{item.title}</span>
-                    </a>
+                    <Link to={item.url} style={{ display: "flex", alignItems: "center", gap: "10px", height: "40px" }}>
+                      <item.icon/>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

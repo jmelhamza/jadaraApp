@@ -6,7 +6,8 @@ const eventSchema = new mongoose.Schema({
            description: String,
   date: { type: Date, 
             required: true },
-           location: String,
+
+  location: String,
 });
 
  const Event = mongoose.model('Event', eventSchema);

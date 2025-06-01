@@ -1,10 +1,42 @@
 
-// import { Header } from "./components/header/header"
-// import { Footer } from "./components/footer/footer"
-// import { CarouselSection } from "./components/main/main"
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from "./components/homePage/index"; 
+import Forms from "./components/Forms";  
+import ProtectDash from './components/layout/protectDash';
+import Profile from './components/dashboardMain/profile';
+import { AccordionDemo } from './components/dashboardMain/setting';
+import MyTable from './components/courrses/cours';
+// import Profile from "./components/layout"
 
-import  MyTable  from "./components/courrses/cours.tsx"
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/forms",
+    element: <Forms />,
+  },
+  {
+    path: "/profile",
+    element: <ProtectDash/>,
+    children: [
+      {
+        index: true,
+        element: <Profile/>,
+      },
+      {
+        path: "/profile/setting",
+        element: <AccordionDemo/>
+      },
+      {
+        path: "/profile/courses",
+        element: <MyTable/>
+      }
+    ]
+  },
 
+]);
 
 // import AddCourseButton from "./components/Admincourses/index.tsx"
 
@@ -12,18 +44,8 @@ import  MyTable  from "./components/courrses/cours.tsx"
 import CourseManager from "./components/Admincourses/piece/lestcourses.tsx"
 
 function App() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      {/* <Header />
-      <CarouselSection />
-      <Footer /> */
-
-
-      <MyTable/>
-      }
-
-
-</div>
-  )
+  return <RouterProvider router={router} />;
 }
-export default App 
+
+export default App;
+
