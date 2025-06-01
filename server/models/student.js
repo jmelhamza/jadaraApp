@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
   groupe: {
     type: Number,
     default: null
+  },
+  image: {
+    type: String,
+    default: null
   }
   });
 

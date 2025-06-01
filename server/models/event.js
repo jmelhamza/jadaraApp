@@ -11,6 +11,6 @@ const eventSchema = new mongoose.Schema({
   image: { type: String }
 });
 
- const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model('Event', eventSchema);
 
- export default Event ;
+export default Event ;

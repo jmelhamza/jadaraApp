@@ -9,6 +9,7 @@ import EventRole from './components/dashboardMain/dashRole/eventRole';
 import InfoRole from './components/dashboardMain/dashRole/infoRole';
 import { ThemeProvider } from './components/darkMode/darkMode';
 import UsersRole from './components/dashboardMain/dashRole/userRole';
+import EditMyData from './components/dashboardMain/editData';
 
 // import Profile from "./components/layout"
 
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
       {
         path: "/profile/events",
         element: <EventRole/>
-      }
+      },
+      {
+        path: "/profile/myData",
+        element: <EditMyData/>
+      },
     ]
   },
 
